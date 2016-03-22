@@ -1,0 +1,54 @@
+{
+  "name": "pixel-picker",
+  "version": "1.0.0",
+  "description": "react color picker that works in any color space",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js",
+    "start": "budo example:bundle.js -d example --live -- -d",
+    "build": "browserify example -o example/bundle.js -g uglifyify",
+    "push": "gh-pages -d example",
+    "deploy": "npm-run-all -s build push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahdinosaur/pixel-picker.git"
+  },
+  "keywords": [
+    "color",
+    "colour",
+    "colorpicker",
+    "picker",
+    "rgb",
+    "hsl",
+    "hsv",
+    "lab",
+    "lch",
+    "luv",
+    "cie",
+    "husl",
+    "color-convert",
+    "color-space"
+  ],
+  "author": "Mikey <michael.williams@enspiral.com> (http://dinosaur.os)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahdinosaur/pixel-picker/issues"
+  },
+  "homepage": "https://github.com/ahdinosaur/pixel-picker#readme",
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "budo": "^8.1.0",
+    "gh-pages": "^0.11.0",
+    "npm-run-all": "^1.6.0",
+    "react-dom": "^0.14.7",
+    "tape": "^4.5.1",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "r-dom": "^2.1.0",
+    "react": "^0.14.7",
+    "t-color": "^1.1.1",
+    "tcomb-form": "^0.9.0"
+  }
+}
