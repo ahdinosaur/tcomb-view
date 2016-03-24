@@ -78,7 +78,6 @@ t.struct.view = function structView (options) {
 
     function updateFor (key) {
       return function (value) {
-        console.log('key', key, 'value', value, props)
         var nextValue = options.type.update(props, {
           [key]: {
             $set: value

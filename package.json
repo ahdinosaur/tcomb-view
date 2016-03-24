@@ -1,7 +1,7 @@
 {
-  "name": "hyper-tcomb",
+  "name": "tcomb-view",
   "version": "1.0.0",
-  "description": "render tcomb types with ",
+  "description": "render a view for tcomb types",
   "main": "index.js",
   "scripts": {
     "test": "tape test.js",
@@ -12,30 +12,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahdinosaur/hyper-tcomb.git"
+    "url": "git+https://github.com/ahdinosaur/tcomb-view.git"
   },
   "keywords": [],
   "author": "Mikey <michael.williams@enspiral.com> (http://dinosaur.os)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ahdinosaur/hyper-tcomb/issues"
+    "url": "https://github.com/ahdinosaur/tcomb-view/issues"
   },
-  "homepage": "https://github.com/ahdinosaur/hyper-tcomb#readme",
+  "homepage": "https://github.com/ahdinosaur/tcomb-view#readme",
   "devDependencies": {
     "browserify": "^13.0.0",
     "budo": "^8.1.0",
     "gh-pages": "^0.11.0",
     "npm-run-all": "^1.6.0",
-    "react-dom": "^0.14.7",
     "tape": "^4.5.1",
     "watchify": "^3.7.0",
     "yo-yo": "^1.1.1"
   },
   "dependencies": {
     "lodash": "^4.6.1",
-    "r-dom": "^2.1.0",
-    "react": "^0.14.7",
-    "t-color": "^1.1.1",
-    "tcomb-form": "^0.9.0"
+    "tcomb": "^3.0.0"
   }
 }
