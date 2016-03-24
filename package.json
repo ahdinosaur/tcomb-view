@@ -1,7 +1,7 @@
 {
-  "name": "pixel-picker",
+  "name": "hyper-tcomb",
   "version": "1.0.0",
-  "description": "react color picker that works in any color space",
+  "description": "render tcomb types with ",
   "main": "index.js",
   "scripts": {
     "test": "tape test.js",
@@ -12,30 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahdinosaur/pixel-picker.git"
+    "url": "git+https://github.com/ahdinosaur/hyper-tcomb.git"
   },
-  "keywords": [
-    "color",
-    "colour",
-    "colorpicker",
-    "picker",
-    "rgb",
-    "hsl",
-    "hsv",
-    "lab",
-    "lch",
-    "luv",
-    "cie",
-    "husl",
-    "color-convert",
-    "color-space"
-  ],
+  "keywords": [],
   "author": "Mikey <michael.williams@enspiral.com> (http://dinosaur.os)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ahdinosaur/pixel-picker/issues"
+    "url": "https://github.com/ahdinosaur/hyper-tcomb/issues"
   },
-  "homepage": "https://github.com/ahdinosaur/pixel-picker#readme",
+  "homepage": "https://github.com/ahdinosaur/hyper-tcomb#readme",
   "devDependencies": {
     "browserify": "^13.0.0",
     "budo": "^8.1.0",
@@ -43,9 +28,11 @@
     "npm-run-all": "^1.6.0",
     "react-dom": "^0.14.7",
     "tape": "^4.5.1",
-    "watchify": "^3.7.0"
+    "watchify": "^3.7.0",
+    "yo-yo": "^1.1.1"
   },
   "dependencies": {
+    "lodash": "^4.6.1",
     "r-dom": "^2.1.0",
     "react": "^0.14.7",
     "t-color": "^1.1.1",
