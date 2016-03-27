@@ -13,8 +13,8 @@ npm install --save tcomb-view
 ### `view = View(options)`
 
 - `options.type`: tcomb type to view
-- `options.hx`: [`hx`](https://github.com/substack/hyperx) compatible module (e.g. [yo-yo](https://github.com/maxogden/yo-yo))
-- `options.layout`: `function (render) {}` which will be called recursively to wrap each type's render function
+- `options.h`: [`hyperx`](https://github.com/substack/hyperx) compatible module (e.g. [`virtual-dom/createElement`](https://github.com/Matt-Esch/virtual-dom), [`hyperscript`](https://github.com/dominictarr/hyperscript), [`yo.createElement`](https://github.com/maxogden/yo-yo), [`react.createElement`](https://facebook.github.io/react/))
+- `options.layout`: `function (view) {}` which will be called recursively to wrap each type's view function
 
 ### `element = view(props)`
 

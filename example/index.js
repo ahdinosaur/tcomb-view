@@ -13,7 +13,7 @@ const thing = Thing({
 
 const view = View({
   type: Thing,
-  hx: yo
+  h: yo.createElement
 })
 
 const main = document.querySelector('main')

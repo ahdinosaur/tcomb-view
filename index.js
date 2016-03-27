@@ -1,5 +1,6 @@
 const t = require('tcomb')
 const mapObjectToArray = require('object-map-to-array')
+const hyperx = require('hyperx')
 
 // until https://github.com/gcanti/tcomb/commit/7ac48a3ab559735ad15cdcfdf9d5b725a70a4688 is published
 t.Type = t.Type || t.irreducible('Type', t.isType)
@@ -29,7 +30,9 @@ function defaultLayout (view) {
   return view
 }
 
-t.String.view = function viewString ({ type, hx }) {
+t.String.view = function viewString ({ type, h }) {
+  const hx = hyperx(h)
+
   return function ({ value, update }) {
     return hx`
       <input type='text'
@@ -44,7 +47,9 @@ t.String.view = function viewString ({ type, hx }) {
   }
 }
 
-t.irreducible.view = function irreducibleView ({ type, hx }) {
+t.irreducible.view = function irreducibleView ({ type, h }) {
+  const hx = hyperx(h)
+
   return function ({ value }) {
     return hx`
       <div className='value'>
@@ -55,7 +60,8 @@ t.irreducible.view = function irreducibleView ({ type, hx }) {
 }
 
 t.struct.view = function structView (options) {
-  const { type, hx } = options
+  const { type, h } = options
+  const hx = hyperx(h)
 
   return function ({ value: props, update }) {
     return hx`
