@@ -51,6 +51,7 @@
     "yo-yo": "^1.1.1"
   },
   "dependencies": {
+    "babelify": "^7.2.0",
     "hyperx": "^2.0.2",
     "hyperxify": "^2.0.1",
     "object-map-to-array": "^1.0.0",
