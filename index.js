@@ -23,9 +23,9 @@ function View (options) {
 
   const layout = options.layout || defaultLayout
 
-  return layout(view(options))
+  return layout(view, options)
 }
 
-function defaultLayout (view) {
-  return view
+function defaultLayout (view, options) {
+  return view(options)
 }
