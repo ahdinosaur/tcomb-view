@@ -22,28 +22,15 @@ function View (options) {
 
   const layout = options.layout || defaultLayout
 
-  return layout(view(
-    Object.assign({}, options, {
-      update: function (patch) {
-        options.update(Patch(patch))
-      }
-    })
-  ))
+  return layout(view(options))
 }
 
 function defaultLayout (view) {
   return view
 }
 
-const Patch = t.struct({
-  path: t.list(t.union([t.String, t.Number], 'Key'), 'Keys'),
-  kind: t.enums.of(['change', 'add', 'remove', 'moveUp', 'moveDown']),
-  type: t.Type,
-  value: t.Any
-}, 'Patch')
-
-t.String.view = function viewString ({ type, update, hx }) {
-  return function (value) {
+t.String.view = function viewString ({ type, hx }) {
+  return function ({ value, update }) {
     return hx`
       <input type='text'
         value=${value}
@@ -52,18 +39,13 @@ t.String.view = function viewString ({ type, update, hx }) {
     `
 
     function onInput (evt) {
-      update({
-        path: [],
-        kind: 'change',
-        type: type,
-        value: evt.target.value
-      })
+      update({ $set: evt.target.value })
     }
   }
 }
 
-t.irreducible.view = function irreducibleView ({ type, update, hx }) {
-  return function (value) {
+t.irreducible.view = function irreducibleView ({ type, hx }) {
+  return function ({ value }) {
     return hx`
       <div className='value'>
         ${value}
@@ -73,15 +55,13 @@ t.irreducible.view = function irreducibleView ({ type, update, hx }) {
 }
 
 t.struct.view = function structView (options) {
-  const { type, update, hx } = options
+  const { type, hx } = options
 
-  return function (props) {
+  return function ({ value: props, update }) {
     return hx`
       <div className='props'>
         ${mapObjectToArray(type.meta.props, (type, key) => {
-          const viewOptions = Object.assign({}, options, {
-            type, update: updateFor(key)
-          })
+          const viewOptions = Object.assign({}, options, { type })
           const view = View(viewOptions)
           const value = props[key]
 
@@ -91,7 +71,7 @@ t.struct.view = function structView (options) {
                 ${key}
               </div>
               <div className='value'>
-                ${view(value) }
+                ${view({ value, update: updateFor(key) })}
               </div>
             </div>
           `
@@ -101,12 +81,7 @@ t.struct.view = function structView (options) {
 
     function updateFor (key) {
       return function (patch) {
-        update({
-          path: [key].concat(patch.path),
-          kind: patch.kind,
-          type: type,
-          value: patch.value
-        })
+        update({ [key]: patch })
       }
     }
   }

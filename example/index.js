@@ -13,30 +13,18 @@ const thing = Thing({
 
 const view = View({
   type: Thing,
-  update: function (patch) {
-    console.log('patch', patch)
-    const validation = t.validate(patch.value, patch.type, {
-      path: patch.path
-    })
-    console.log('validation', validation)
-    const spec = patchToSpec(patch)
-    console.log('spec', spec)
-    
-    const nextValue = patch.type.update(thing, spec)
-    console.log('nextValue', nextValue)
-    yo.update(main, view(nextValue))
-  },
   hx: yo
 })
 
 const main = document.querySelector('main')
-yo.update(main, view(thing))
+updateView(main, thing)
 
-function patchToSpec (patch) {
-  switch (patch.kind) {
-    case 'change':
-      return setIn({}, patch.path, {
-        $set: patch.value
-      })
-  }
+function updateView (element, state) {
+  yo.update(element, view({
+    value: state,
+    update: function (patch) {
+      const nextState = Thing.update(state, patch)
+      updateView(element, nextState)
+    }
+  }))
 }
