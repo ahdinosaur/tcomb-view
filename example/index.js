@@ -1,7 +1,6 @@
 const t = require('tcomb-validation')
 const yo = require('yo-yo')
 const View = require('../')
-const setIn = require('set-in')
 
 const Thing = t.struct({
   name: t.String
@@ -17,14 +16,14 @@ const view = View({
 })
 
 const main = document.querySelector('main')
+
 updateView(main, thing)
 
-function updateView (element, state) {
+function updateView (element, value) {
+  console.log('value', value)
+
   yo.update(element, view({
-    value: state,
-    update: function (patch) {
-      const nextState = Thing.update(state, patch)
-      updateView(element, nextState)
-    }
+    value: value,
+    onUpdate: updateView.bind(null, element)
   }))
 }

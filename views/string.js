@@ -5,7 +5,7 @@ module.exports = viewString
 function viewString ({ type, h }) {
   const hx = hyperx(h)
 
-  return function ({ value, update }) {
+  return function ({ value, onUpdate }) {
     return hx`
       <input type='text'
         value=${value}
@@ -14,7 +14,7 @@ function viewString ({ type, h }) {
     `
 
     function onInput (evt) {
-      update({ $set: evt.target.value })
+      onUpdate(evt.target.value)
     }
   }
 }

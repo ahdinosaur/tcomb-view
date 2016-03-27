@@ -19,7 +19,7 @@ npm install --save tcomb-view
 ### `element = view(props)`
 
 - `props.value`: value of tcomb type
-- `props.update`: `function (value) {}` to call when value is updated
+- `props.onUpdate`: `function (value) {}` to call when value is updated
 
 ## TODO
 

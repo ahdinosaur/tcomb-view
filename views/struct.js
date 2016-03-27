@@ -9,7 +9,7 @@ function structView (options) {
   const { type, h } = options
   const hx = hyperx(h)
 
-  return function ({ value: props, update }) {
+  return function ({ value: props, onUpdate }) {
     return hx`
       <div className='props'>
         ${mapObjectToArray(type.meta.props, (type, key) => {
@@ -23,7 +23,7 @@ function structView (options) {
                 ${key}
               </div>
               <div className='value'>
-                ${view({ value, update: updateFor(key) })}
+                ${view({ value, onUpdate: updateFor(key) })}
               </div>
             </div>
           `
@@ -32,8 +32,9 @@ function structView (options) {
     `
 
     function updateFor (key) {
-      return function (patch) {
-        update({ [key]: patch })
+      return function (value) {
+        const patch = { [key]: { $set: value } }
+        onUpdate(type.update(props, patch))
       }
     }
   }
