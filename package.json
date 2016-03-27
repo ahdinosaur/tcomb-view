@@ -14,6 +14,7 @@
   },
   "browserify": {
     "transform": [
+      "hyperxify",
       [
         "babelify",
         {
@@ -21,8 +22,7 @@
             "es2015"
           ]
         }
-      ],
-      "hyperxify"
+      ]
     ]
   },
   "repository": {
