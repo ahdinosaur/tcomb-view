@@ -1,6 +1,6 @@
 {
   "name": "tcomb-view",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "render a view for tcomb types",
   "main": "index.js",
   "scripts": {
