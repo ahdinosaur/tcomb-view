@@ -14,10 +14,12 @@ npm install --save tcomb-view
 
 - `options.type`: tcomb type to view
 - `options.hx`: [`hx`](https://github.com/substack/hyperx) compatible module (e.g. [yo-yo](https://github.com/maxogden/yo-yo))
-- `options.update`: `function (value) {}` to call when value is updated
 - `options.layout`: `function (render) {}` which will be called recursively to wrap each type's render function
 
-### `element = view(value)`
+### `element = view(props)`
+
+- `props.value`: value of tcomb type
+- `props.update`: `function (value) {}` to call when value is updated
 
 ## TODO
 
