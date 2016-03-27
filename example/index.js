@@ -1,23 +1,42 @@
-var t = require('tcomb')
-var yo = require('yo-yo')
-var View = require('../')
+const t = require('tcomb-validation')
+const yo = require('yo-yo')
+const View = require('../')
+const setIn = require('set-in')
 
-var Thing = t.struct({
+const Thing = t.struct({
   name: t.String
 })
 
-var view = View({
+const thing = Thing({
+  name: 'computer'
+})
+
+const view = View({
   type: Thing,
-  update: function (value) {
-    console.log('value', value)
-    yo.update(main, view(value))
+  update: function (patch) {
+    console.log('patch', patch)
+    const validation = t.validate(patch.value, patch.type, {
+      path: patch.path
+    })
+    console.log('validation', validation)
+    const spec = patchToSpec(patch)
+    console.log('spec', spec)
+    
+    const nextValue = patch.type.update(thing, spec)
+    console.log('nextValue', nextValue)
+    yo.update(main, view(nextValue))
   },
   hx: yo
 })
 
-var thing = Thing({
-  name: 'computer'
-})
-
-var main = document.querySelector('main')
+const main = document.querySelector('main')
 yo.update(main, view(thing))
+
+function patchToSpec (patch) {
+  switch (patch.kind) {
+    case 'change':
+      return setIn({}, patch.path, {
+        $set: patch.value
+      })
+  }
+}

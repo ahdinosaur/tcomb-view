@@ -50,7 +50,9 @@
     "yo-yo": "^1.1.1"
   },
   "dependencies": {
-    "lodash": "^4.6.1",
-    "tcomb": "^3.0.0"
+    "object-map-to-array": "^1.0.0",
+    "set-in": "^1.1.1",
+    "tcomb": "^3.0.0",
+    "tcomb-validation": "^3.0.0"
   }
 }
