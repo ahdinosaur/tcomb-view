@@ -2,6 +2,8 @@
 
 render a view for tcomb types
 
+**inspired by [`tcomb-form`](https://github.com/gcanti/tcomb-form)**
+
 ```shell
 npm install --save tcomb-view
 ```
