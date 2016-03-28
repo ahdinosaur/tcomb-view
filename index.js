@@ -14,7 +14,9 @@ function view (h, props) {
   const layout = props.layout || defaultLayout
   const render = layout(typeView, props)
 
-  return render(h, props)
+  return render(h, Props.update(props, {
+    type: { $set: type }
+  }))
 }
 
 function defaultLayout (typeView, props) {
