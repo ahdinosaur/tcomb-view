@@ -1,5 +1,5 @@
 const hyperx = require('hyperx')
-const mapObjectToArray = require('object-map-to-array')
+const map = require('lodash/map')
 
 const view = require('../')
 
@@ -10,7 +10,7 @@ function structView (h, { type, value: props, onUpdate }) {
 
   return hx`
     <div className='props'>
-      ${mapObjectToArray(type.meta.props, (type, key) => {
+      ${map(type.meta.props, (type, key) => {
         const value = props[key]
 
         return hx`
@@ -19,7 +19,7 @@ function structView (h, { type, value: props, onUpdate }) {
               ${key}
             </div>
             <div className='value'>
-              ${view(h, { type, value, onUpdate: updateFor(key) })}
+              ${view(h, { type, key, value, onUpdate: updateFor(key) })}
             </div>
           </div>
         `

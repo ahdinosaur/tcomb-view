@@ -8,11 +8,11 @@ function viewString (h, { type, value, onUpdate }) {
   return hx`
     <input type='text'
       value=${value}
-      oninput=${onInput}
+      oninput=${update}
     />
   `
 
-  function onInput (evt) {
+  function update (evt) {
     onUpdate(evt.target.value)
   }
 }
