@@ -2,14 +2,12 @@ const hyperx = require('hyperx')
 
 module.exports = irreducibleView
 
-function irreducibleView ({ type, h }) {
+function irreducibleView (h, { type, value }) {
   const hx = hyperx(h)
 
-  return function ({ value }) {
-    return hx`
-      <div className='value'>
-        ${value}
-      </div>
-    `
-  }
+  return hx`
+    <div className='value'>
+      ${value}
+    </div>
+  `
 }
